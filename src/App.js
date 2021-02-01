@@ -1,7 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { useCookies } from 'react-cookie'
+
+import logo from './logo.svg'
+import './App.css'
 
 function App() {
+    const [cookies, setCookie] = useCookies(['connect.sid'])
+console.log(cookies)
+    const handleCookie = () => {
+        setCookie('fuckoff', 'cookie', {
+            path: 'http://localhost:5000'
+        })
+    }
+
+
     return (
         <div className="App">
             <header className="App-header">
@@ -18,6 +29,7 @@ function App() {
                 Learn React
                 </a>
             </header>
+            <button onClick={handleCookie}>cookie</button>
         </div>
     );
 }

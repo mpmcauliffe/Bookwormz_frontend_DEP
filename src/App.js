@@ -6,7 +6,7 @@ import { Landing, Userkey, } from './pages'
 
 function App(props) {
 console.log(props.cookies.HAS_DOCUMENT_COOKIE)
-
+console.log(document.cookies)
     return (
         <Switch>
             <Route

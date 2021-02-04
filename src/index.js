@@ -1,19 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { CookiesProvider } from 'react-cookie'
-import './index.css'
+import { BrowserRouter as Router, Route, } from 'react-router-dom'
 import App from './App'
-import reportWebVitals from './reportWebVitals'
+import { ThemeProvider, } from 'styled-components'
+import { GlobalStyle, } from './global/AppStyles.comp'
+import { Theme, } from './global/themes/themeLight'
+import 'normalize.css'
+import './global/font.css'
 
 
 ReactDOM.render(
-    <React.StrictMode>
-        <CookiesProvider>
-            <App />
-        </CookiesProvider>
-    </React.StrictMode>,
+    <CookiesProvider>
+        <Router>
+            <ThemeProvider theme={Theme}>
+                <GlobalStyle />
+                <Route component={App} />
+            </ThemeProvider>
+        </Router>
+    </CookiesProvider>,
     document.getElementById('root')
 )
-
-
-reportWebVitals()

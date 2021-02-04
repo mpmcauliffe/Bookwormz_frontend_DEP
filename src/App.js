@@ -1,37 +1,27 @@
-import { useCookies } from 'react-cookie'
+import React from 'react'
+import { withCookies } from 'react-cookie'
+import { Route, Switch, } from 'react-router-dom'
+import { Landing, Userkey, } from './pages'
 
-import logo from './logo.svg'
-import './App.css'
 
-function App() {
-    const [cookies, setCookie] = useCookies(['connect.sid'])
-console.log(cookies)
-    const handleCookie = () => {
-        setCookie('fuckoff', 'cookie', {
-            path: 'http://localhost:5000'
-        })
-    }
-
+function App(props) {
+console.log(props.cookies.HAS_DOCUMENT_COOKIE)
 
     return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                className="App-link"
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                >
-                Learn React
-                </a>
-            </header>
-            <button onClick={handleCookie}>cookie</button>
-        </div>
-    );
+        <Switch>
+            <Route
+                exact
+                path='/'
+                component={Landing} />
+
+            <Route
+                exact
+                path='/userkey'
+                render={() => (
+                    <Userkey cookies={props.cookies} /> )} />
+        </Switch>
+    )
 }
 
-export default App;
+export default withCookies(App)
+//export default App

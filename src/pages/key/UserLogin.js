@@ -1,5 +1,7 @@
 import React, { useState, useEffect, } from 'react'
+import { Redirect } from 'react-router-dom'
 import axios from 'axios'
+import { Dashboard } from '../dashboard/Dashboard'
 import styled from 'styled-components'
 import './spinner.css'
 
@@ -37,32 +39,29 @@ const SpinnerContainer = styled.div`
         }
     }
 `
-export const Userkey = props => {
+export const UserLogin = props => {
     const [key, setKey] = useState('')
 
     const getKey = async () => {
         try {
             const res = await axios.get('/auth/token')
-            localStorage.setItem('token', res.data.token)
-            console.log(res.data.token)
+            if (res.data.token) {
+                setTimeout(() => {
+                    localStorage.setItem('token', res.data.token)
+                    console.log(res.data.token)
+                    props.history.push('/dashboard')
+                }, 1000);
+                //return <Redirect to='/dashboard' />
+            }
+            return props.history.push('/')
+            
         } catch (e) {
             console.log(e)
         }
     }   
 
     useEffect(() => {
-        
         getKey()
-        // setKey(document.cookie)
-
-        // //console.log(key)
-
-        // localStorage.setItem('token', key.substr(4))
-        // setTimeout(() => {
-        //     const oldCookie = 'jwt'
-        //     document.cookie = oldCookie + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
-        // }, 2000);
-        
     }, [ ])
 
     return (

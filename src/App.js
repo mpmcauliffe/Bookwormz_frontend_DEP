@@ -1,11 +1,18 @@
-import React from 'react'
-import { withCookies } from 'react-cookie'
-import { Route, Switch, } from 'react-router-dom'
-import { Landing, Userkey, } from './pages'
+import React, { useState, useEffect, } from 'react'
+// import { withCookies } from 'react-cookie'
+import { Route, Redirect, Switch, } from 'react-router-dom'
+import { Dashboard, Landing, UserLogin, } from './pages'
+import setAuthToken from './utils/setAuthToken'
 
+
+if(localStorage.token) { setAuthToken(localStorage.token) }
 
 function App(props) {
+    const [key, setKey] = useState(null)
+    
+    useEffect(() => {
 
+    }, [])
 
     return (
         <Switch>
@@ -17,11 +24,15 @@ function App(props) {
             <Route
                 exact
                 path='/userlogin'
-                render={() => (
-                    <Userkey cookies={props.cookies} /> )} />
+                component={UserLogin} />
+
+            <Route 
+                exact
+                path='/dashboard'
+                component={Dashboard} />
         </Switch>
     )
 }
 
-export default withCookies(App)
-//export default App
+//export default withCookies(App)
+export default App

@@ -1,9 +1,7 @@
 import React, { useState, useEffect, } from 'react'
-import { Redirect } from 'react-router-dom'
 import axios from 'axios'
-import { Dashboard } from '../dashboard/Dashboard'
 import styled from 'styled-components'
-import './spinner.css'
+
 
 // see https://loading.io/css/ for cool CSS spinners
 const SpinnerContainer = styled.div`

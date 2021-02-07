@@ -1,6 +1,6 @@
 import React, { useEffect, } from 'react'
 import { Route, Switch, } from 'react-router-dom'
-import { Landing, UserLogin, } from './lock'
+import { Landing, UserLogin, } from './pages/lock'
 import { Dashboard } from './dashboard'
 import setAuthToken from './utils/setAuthToken'
 import 'materialize-css/dist/css/materialize.min.css'

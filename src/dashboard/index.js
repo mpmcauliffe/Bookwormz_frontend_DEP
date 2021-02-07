@@ -1,12 +1,26 @@
 import React from 'react'
-import { Navbar, } from '../components'
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
+import { Navbar, } from './components'
+import { Books, Group, Groups } from '../pages'
 
 
 export const Dashboard = () => {
     return (
-        <div>
+        <Router>
             <Navbar />
             <h3>Dashboard</h3>
-        </div>
+            <Switch>
+                <Route
+                    exact
+                    path='/dashboard/books'
+                    component={Books} />
+
+                <Route
+                    exact
+                    path='/dashboard/groups'
+                    component={Groups} />
+            </Switch>
+        </Router>
+        
     )
 }

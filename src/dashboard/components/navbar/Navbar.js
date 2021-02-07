@@ -1,6 +1,8 @@
 import React, { Fragment, } from 'react'
+import { Link, } from 'react-router-dom'
 import styled from 'styled-components'
-import M from 'materialize-css/dist/js/materialize.min.js'
+import { Books, Group, Groups } from '../../../pages'
+//import M from 'materialize-css/dist/js/materialize.min.js'
 
 
 //M.Sidenav.init(elems, {edge:'right'}
@@ -48,15 +50,15 @@ export const Navbar = () => {
                     className='right brand-logo'
                     src={require(`./bkw-small.png`).default} />
                 <NavMenuRight className='left '>
-                    <li><a 
+                    <li><a
                         className='sidenav-trigger show-on-large' 
                         href='#!' data-target='burger-menu'>
                     <i className='fas fa-bars'></i></a></li>
                 
-                    <li><a href='badges.html'>
-                        <i className='fas fa-users' /></a></li>
-                    <li><a href='sass.html'>
-                        <i className='fas fa-book' /></a></li>
+                    <li><Link to='/dashboard/groups'>
+                        <i className='fas fa-users' /></Link></li>
+                    <li><Link to='/dashboard/books'>
+                        <i className='fas fa-book' /></Link></li>
                 </NavMenuRight>
                 </div>
             </nav>

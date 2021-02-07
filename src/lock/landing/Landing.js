@@ -31,8 +31,8 @@ const LandingContainer = styled.div`
     }
     .link__btn {
         height: 35px;
-        width: 235px;
-        padding: 13px;
+        width: 300px;
+        padding: 31px;
         border-radius: 4px;
 
         display: flex;

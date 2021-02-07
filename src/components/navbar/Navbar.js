@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, } from 'react'
+import React, { Fragment, } from 'react'
 import styled from 'styled-components'
 import M from 'materialize-css/dist/js/materialize.min.js'
 
@@ -9,14 +9,25 @@ const NavMenuRight = styled.ul`
         color: #6b1f39;
         &:hover { background: transparent; }
     }
-`
 
+    li:first-of-type { margin-right: -1.3rem; }
+    li:nth-child(2), li:nth-child(3) { margin-top: .6rem; }
+
+    @media (min-width: 601px) { 
+        li:first-of-type { margin-right: 2rem; }
+        li:nth-child(2), li:nth-child(3) { margin-top: 0; }
+    }
+`
+const NavLogo = styled.img`
+    /* height: 6rem; */
+    height: 5.5rem;
+    margin-right: 3rem;
+
+    @media (min-width: 601px) { height: 6rem; }
+`
+//hide-on-med-and-down
 
 export const Navbar = () => {
-
-    useEffect(() => { M.Sidenav.init(null, {edge:'right'}) }, [  ])
-   
-
 
     return (
         <Fragment>
@@ -32,17 +43,16 @@ export const Navbar = () => {
 
             <nav className='brown lighten-5'>
                 <div className='nav-wrapper'>
-                <img 
+                <NavLogo 
                     alt='BKW_LOGO'
                     className='right brand-logo'
-                    style={{ height: '6rem', }}
                     src={require(`./bkw-small.png`).default} />
-                <NavMenuRight className='left hide-on-med-and-down'>
+                <NavMenuRight className='left '>
                     <li><a 
                         className='sidenav-trigger show-on-large' 
                         href='#!' data-target='burger-menu'>
-                    <i class='fas fa-bars'></i></a></li>
-                    
+                    <i className='fas fa-bars'></i></a></li>
+                
                     <li><a href='badges.html'>
                         <i className='fas fa-users' /></a></li>
                     <li><a href='sass.html'>

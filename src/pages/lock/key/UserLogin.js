@@ -1,4 +1,4 @@
-import React, { useState, useEffect, } from 'react'
+import React, { useEffect, } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 
@@ -38,8 +38,6 @@ const SpinnerContainer = styled.div`
     }
 `
 export const UserLogin = props => {
-    const [key, setKey] = useState('')
-
     const getKey = async () => {
         try {
             const res = await axios.get('/auth/token')
@@ -60,7 +58,7 @@ export const UserLogin = props => {
 
     useEffect(() => {
         getKey()
-    }, [ ])
+    })
 
     return (
         <SpinnerContainer>

@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router, Route, } from 'react-router-dom'
 import App from './App'
 import { ThemeProvider, } from 'styled-components'
 import { GlobalStyle, } from './global/AppStyles.comp'
@@ -10,11 +9,9 @@ import './global/font.css'
 
 
 ReactDOM.render(
-    <Router>
-        <ThemeProvider theme={Theme}>
-            <GlobalStyle />
-            <Route component={App} />
-        </ThemeProvider>
-    </Router>,
+    <ThemeProvider theme={Theme}>
+        <GlobalStyle />
+        <App />
+    </ThemeProvider>,
     document.getElementById('root')
 )

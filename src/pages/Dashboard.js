@@ -1,5 +1,5 @@
 import React, { Fragment, } from 'react'
-import { Navbar, } from './components'
+import { Navbar, } from '../dashboard/components'
 
 
 export const Dashboard = () => {

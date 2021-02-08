@@ -1,4 +1,6 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 
@@ -58,16 +60,10 @@ const LandingContainer = styled.div`
 `
 
 
-export const Landing = props => {
-    // const [isLoggedIn, setIsLoggedIn] = (false)
+const Landing_proto = ({ isAuthenticated, history }) => {
 
-    // useEffect(() => {
-
-    // })
-
-
-    if (localStorage.token) {
-        props.history.push('/dashboard')
+    if (isAuthenticated) {
+        history.push('/dashboard')
     }
 
     return (
@@ -91,9 +87,13 @@ export const Landing = props => {
 }
 
 
-// <a href="/auth/facebook" class="link__btn link__btn-facebook">
-//     <i class="fab fa-facebook-f left fa-1x"></i>&nbsp;&nbsp;&nbsp; Log in with Facebook
-// </a>
-// <a href="/auth/twitter" class="link__btn link__btn-twitter">
-//     <i class="fab fa-twitter left fa-1x"></i>&nbsp;&nbsp;&nbsp; Log in with Twitter
-// </a>
+Landing_proto.propTypes = {
+    isAuthenticated: PropTypes.bool.isRequired,
+}
+
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated,
+})
+
+const Landing = connect(mapStateToProps, { })(Landing_proto)
+export { Landing }

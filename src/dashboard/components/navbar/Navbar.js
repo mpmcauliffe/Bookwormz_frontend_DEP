@@ -1,10 +1,10 @@
 import React, { Fragment, } from 'react'
 import { Link, } from 'react-router-dom'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
-//import M from 'materialize-css/dist/js/materialize.min.js'
 
 
-//M.Sidenav.init(elems, {edge:'right'}
 const NavMenuRight = styled.ul`
     li a {
         color: #6b1f39;
@@ -22,15 +22,15 @@ const NavMenuRight = styled.ul`
     }
 `
 const NavLogo = styled.img`
-    /* height: 6rem; */
     height: 5.5rem;
     margin-right: 3rem;
 
     @media (min-width: 601px) { height: 6rem; }
 `
-//hide-on-med-and-down
 
-export const Navbar = () => {
+const Navbar_proto = ({ isAuthenticated }) => {
+
+    if (!isAuthenticated) { return null }
 
     return (
         <Fragment>
@@ -40,8 +40,8 @@ export const Navbar = () => {
                 style={{ width: '20rem', }} >
                 <li><a href='#!'>
                     Account <i className='far fa-user secondary-content' /></a></li>
-                <li><a href='#!'>
-                    Logout <i className='fas fa-sign-out-alt secondary-content' /></a></li>
+                <li><Link to='/userauth'>
+                    Logout <i className='fas fa-sign-out-alt secondary-content' /></Link></li>
             </ul>
 
             <nav className='brown lighten-5'>
@@ -56,15 +56,29 @@ export const Navbar = () => {
                         href='#!' data-target='burger-menu'>
                     <i className='fas fa-bars' /></a></li>
                 
-                    <li><Link to='/dashboard/Clubs'>
-                        <i className='fas fa-users' />
-                        <span>&nbsp;&nbsp;Clubs</span></Link></li>
-                    <li><Link to='/dashboard/books'>
-                        <i className='fas fa-book' />
-                        <span>&nbsp;&nbsp;Books</span></Link></li>
+                    <li><Link 
+                        to='/Clubs'>
+                            <i className='fas fa-users' />
+                            <span>&nbsp;&nbsp;Clubs</span></Link></li>
+                    <li><Link 
+                        to='/books'>
+                            <i className='fas fa-book' />
+                            <span>&nbsp;&nbsp;Books</span></Link></li>
                 </NavMenuRight>
                 </div>
             </nav>
         </Fragment>
     )
 }
+
+
+Navbar_proto.propTypes = {
+    isAuthenticated: PropTypes.bool.isRequired,
+}
+
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated,
+})
+
+const Navbar = connect(mapStateToProps, { })(Navbar_proto)
+export { Navbar }

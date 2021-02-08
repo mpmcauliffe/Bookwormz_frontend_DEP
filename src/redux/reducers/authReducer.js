@@ -2,7 +2,7 @@ import { LOGIN, LOGOUT, ERROR, } from '../types'
 
 
 const initialState = {
-    isAuthenticated: false,
+    isAuthenticated: localStorage.token ? true : false,
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export

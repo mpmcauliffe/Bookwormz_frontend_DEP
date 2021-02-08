@@ -16,6 +16,23 @@ export const login = history => async dispatch => {
         //return props.history.push('/')
         
     } catch (e) {
+        history.push('/')
         dispatch({ type: ERROR })
     }
 }
+
+/* logs out user */
+export const logout = history => async dispatch => {
+    try {
+        // localStorage.removeItem('token')
+        // const res = await axios.get('/auth/token')
+                
+        history.push('/') 
+        dispatch({ type: LOGOUT })
+        
+    } catch (e) {
+        history.push('/dashboard')
+        dispatch({ type: ERROR })
+    }
+}
+

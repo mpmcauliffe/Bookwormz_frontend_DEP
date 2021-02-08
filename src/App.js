@@ -6,9 +6,8 @@ import { AnimatePresence, motion, } from 'framer-motion'
 import { Provider } from 'react-redux'
 import store from './store'
 
-import { Books, Club, Clubs, Landing, UserLogin, } from './pages'
-import { Dashboard } from './dashboard'
-import { Navbar, } from './dashboard/components'
+import { Books, Dashboard, Club, Clubs, Landing, UserAuth, } from './pages'
+import { Navbar, SecureRoute, } from './dashboard/components'
 import setAuthToken from './utils/setAuthToken'
 
 import 'materialize-css/dist/css/materialize.min.css'
@@ -36,22 +35,22 @@ function App(props) {
 
                         <Route
                             exact
-                            path='/userlogin'
-                            component={UserLogin} />
+                            path='/userauth'
+                            component={UserAuth} />
 
-                        <Route 
+                        <SecureRoute 
                             exact
                             path='/dashboard'
                             component={Dashboard} />
 
-                        <Route
+                        <SecureRoute
                             exact
-                            path='/dashboard/books'
+                            path='/books'
                             component={Books} />
 
-                        <Route
+                        <SecureRoute
                             exact
-                            path='/dashboard/clubs'
+                            path='/clubs'
                             component={Clubs} />
                     </Switch>
                 </AnimatePresence>

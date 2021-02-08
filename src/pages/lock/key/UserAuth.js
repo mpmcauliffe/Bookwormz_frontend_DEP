@@ -1,6 +1,7 @@
 import React, { useEffect, } from 'react'
 import { connect } from 'react-redux'
-import { login } from '../../../redux/actions/authActions'
+import PropTypes from 'prop-types'
+import { login, logout, } from '../../../redux/actions/authActions'
 import styled from 'styled-components'
 
 
@@ -38,11 +39,14 @@ const SpinnerContainer = styled.div`
         }
     }
 `
-const UserLogin_proto = ({ login, isAuthenticated, history }) => {
+const UserAuth_proto = ({ login, logout, isAuthenticated, history, }) => {
     useEffect(() => {
-        setTimeout(() => {
-            login(history)        
-        }, 2000)
+        if (!isAuthenticated) {
+            setTimeout(() => { login(history) }, 1000)
+        } else {
+            localStorage.removeItem('token')   
+            setTimeout(() => { logout(history) }, 1000)
+        }
     })
 
     return (
@@ -53,9 +57,16 @@ const UserLogin_proto = ({ login, isAuthenticated, history }) => {
 }
 
 
+UserAuth_proto.propTypes = {
+    login: PropTypes.func.isRequired,
+    logout: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired,
+    isAuthenticated: PropTypes.bool.isRequired,
+}
+
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated,
 })
 
-const UserLogin = connect(mapStateToProps, { login })(UserLogin_proto)
-export { UserLogin }
+const UserAuth = connect(mapStateToProps, { login, logout, })(UserAuth_proto)
+export { UserAuth }

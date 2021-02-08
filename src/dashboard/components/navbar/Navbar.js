@@ -10,13 +10,15 @@ const NavMenuRight = styled.ul`
         color: #6b1f39;
         &:hover { background: transparent; }
     }
+    span { visibility: hidden; }
 
-    li:first-of-type { margin-right: -1.3rem; }
+    li:first-of-type { margin-right: 1rem; }
     li:nth-child(2), li:nth-child(3) { margin-top: .6rem; }
 
     @media (min-width: 601px) { 
         li:first-of-type { margin-right: 2rem; }
         li:nth-child(2), li:nth-child(3) { margin-top: 0; }
+        span { font-size: 1.9rem; visibility: visible; }
     }
 `
 const NavLogo = styled.img`
@@ -52,12 +54,14 @@ export const Navbar = () => {
                     <li><a
                         className='sidenav-trigger show-on-large' 
                         href='#!' data-target='burger-menu'>
-                    <i className='fas fa-bars'></i></a></li>
+                    <i className='fas fa-bars' /></a></li>
                 
-                    <li><Link to='/dashboard/groups'>
-                        <i className='fas fa-users' /></Link></li>
+                    <li><Link to='/dashboard/Clubs'>
+                        <i className='fas fa-users' />
+                        <span>&nbsp;&nbsp;Clubs</span></Link></li>
                     <li><Link to='/dashboard/books'>
-                        <i className='fas fa-book' /></Link></li>
+                        <i className='fas fa-book' />
+                        <span>&nbsp;&nbsp;Books</span></Link></li>
                 </NavMenuRight>
                 </div>
             </nav>

@@ -3,7 +3,7 @@ import { useLocation, Route, Switch,
     BrowserRouter as Router, } from 'react-router-dom'
 import { AnimatePresence, motion, } from 'framer-motion'
 
-import { Books, Group, Groups, Landing, UserLogin, } from './pages'
+import { Books, Group, Clubs, Landing, UserLogin, } from './pages'
 import { Dashboard } from './dashboard'
 import { Navbar, } from './dashboard/components'
 import setAuthToken from './utils/setAuthToken'
@@ -47,8 +47,8 @@ function App(props) {
 
                     <Route
                         exact
-                        path='/dashboard/groups'
-                        component={Groups} />
+                        path='/dashboard/clubs'
+                        component={Clubs} />
                 </Switch>
             </AnimatePresence>
         </Router>

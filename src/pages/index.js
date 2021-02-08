@@ -1,5 +1,5 @@
 export * from './lock/key/UserLogin'
 export * from './lock/landing/Landing'
 export * from './Books'
-export * from './Group'
-export * from './Groups'
+export * from './Club'
+export * from './Clubs'

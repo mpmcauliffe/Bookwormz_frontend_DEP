@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
 
 
@@ -58,7 +58,18 @@ const LandingContainer = styled.div`
 `
 
 
-export const Landing = () => {
+export const Landing = props => {
+    // const [isLoggedIn, setIsLoggedIn] = (false)
+
+    // useEffect(() => {
+
+    // })
+
+
+    if (localStorage.token) {
+        props.history.push('/dashboard')
+    }
+
     return (
         <LandingContainer>
             <section className='container__header'>

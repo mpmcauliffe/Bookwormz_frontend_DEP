@@ -1,5 +1,6 @@
 import React, { useEffect, } from 'react'
-import axios from 'axios'
+import { connect } from 'react-redux'
+import { login } from '../../../redux/actions/authActions'
 import styled from 'styled-components'
 
 
@@ -37,27 +38,11 @@ const SpinnerContainer = styled.div`
         }
     }
 `
-export const UserLogin = props => {
-    const getKey = async () => {
-        try {
-            const res = await axios.get('/auth/token')
-            if (res.data.token) {
-                setTimeout(() => {
-                    localStorage.setItem('token', res.data.token)
-                    console.log(res.data.token)
-                    props.history.push('/dashboard')
-                }, 1000);
-                //return <Redirect to='/dashboard' />
-            }
-            return props.history.push('/')
-            
-        } catch (e) {
-            console.log(e)
-        }
-    }   
-
+const UserLogin_proto = ({ login, isAuthenticated, history }) => {
     useEffect(() => {
-        getKey()
+        setTimeout(() => {
+            login(history)        
+        }, 2000)
     })
 
     return (
@@ -66,3 +51,11 @@ export const UserLogin = props => {
         </SpinnerContainer>
     )
 }
+
+
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated,
+})
+
+const UserLogin = connect(mapStateToProps, { login })(UserLogin_proto)
+export { UserLogin }

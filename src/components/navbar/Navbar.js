@@ -7,22 +7,21 @@ import styled from 'styled-components'
 
 const NavMenuRight = styled.ul`
     li a {
-        color: #6b1f39;
+        color: #e0e0e0; // #6b1f39;
+        font-weight: 300;
         &:hover { background: transparent; }
     }
-    span { visibility: hidden; }
 
     li:first-of-type { margin: 0 0 1rem -2rem; }
-    li:nth-child(2), li:nth-child(3) { margin-top: .6rem; }
-    li:nth-child(4), li:nth-child(4) span { visibility: hidden; }
+    li:nth-child(2), li:nth-child(3) { margin-top: .6rem; } 
+    span { visibility: hidden; }
+    li:nth-child(4) { visibility: hidden; }
 
     @media (min-width: 601px) { 
-        li:first-of-type { margin: 0 2rem 0 .3rem; }
         li:nth-child(2), li:nth-child(3) { margin-top: 0; }
-        span { font-size: 1.9rem; visibility: visible; }
-    }
-    @media (min-width: 769px) {
-        li:nth-child(4), li:nth-child(4) span { visibility: visible; }
+        span { font-size: 1.9rem; visibility: visible; } 
+        li:nth-child(2), li:nth-child(3), li:nth-child(4) { visibility: hidden; }
+        li:first-of-type { margin: 0 2rem 0 .3rem; }
     }
 `
 const NavLogo = styled.img`
@@ -48,7 +47,7 @@ const Navbar_proto = ({ isAuthenticated, }) => {
                     Logout <i className='fas fa-sign-out-alt secondary-content' /></Link></li>
             </ul>
 
-            <nav className='brown lighten-5'>
+            <nav className='grey darken-3'>
                 <div className='nav-wrapper'>
                 <Link 
                     to='/dashboard'>
@@ -56,8 +55,8 @@ const Navbar_proto = ({ isAuthenticated, }) => {
                         alt='BKW_LOGO'
                         className='right brand-logo'
                         src={window.innerWidth < 481 
-                            ? require(`./bkw-abbr.png`).default
-                            : require(`./bkw-small.png`).default} />    
+                            ? require(`./bkw-abbr_light.png`).default
+                            : require(`./bkw-sm_light.png`).default} />    
                 </Link>
                 
                 <NavMenuRight className='left '>

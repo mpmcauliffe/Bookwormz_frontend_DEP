@@ -26,6 +26,7 @@ export const login = history => async dispatch => {
 export const logout = history => async dispatch => {
     try {
         localStorage.removeItem('token')
+        //document.cookie = 'connect.sid=; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
         // const res = await axios.get('/auth/token')
                 
         history.push('/') 

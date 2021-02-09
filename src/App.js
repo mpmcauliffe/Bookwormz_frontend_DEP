@@ -1,7 +1,6 @@
 import React, { useEffect, } from 'react'
-import { useLocation, Route, Switch, 
-    BrowserRouter as Router, } from 'react-router-dom'
-import { AnimatePresence, motion, } from 'framer-motion'
+import { useLocation, Route, Switch, } from 'react-router-dom'
+import { AnimatePresence, } from 'framer-motion'
 
 import { Provider } from 'react-redux'
 import store from './store'
@@ -17,44 +16,42 @@ import M from 'materialize-css/dist/js/materialize.min.js'
 if(localStorage.token) { setAuthToken(localStorage.token) }
 
 function App(props) {
-    // const location = useLocation()  // location={location} key={location.pathname}
+    const location = useLocation()  // 
 
     useEffect(() => { M.AutoInit() }, [  ])
 
 
     return (
         <Provider store={store}>
-            <Router>
-                <Navbar />
-                <AnimatePresence exitBeforeEnter>
-                    <Switch>
-                        <Route
-                            exact
-                            path='/'
-                            component={Landing} />
+            <Navbar />
+            <AnimatePresence exitBeforeEnter>
+                <Switch location={location} key={location.pathname}>
+                    <Route
+                        exact
+                        path='/'
+                        component={Landing} />
 
-                        <Route
-                            exact
-                            path='/userauth'
-                            component={UserAuth} />
+                    <Route
+                        exact
+                        path='/userauth'
+                        component={UserAuth} />
 
-                        <SecureRoute 
-                            exact
-                            path='/dashboard'
-                            component={Dashboard} />
+                    <SecureRoute 
+                        exact
+                        path='/dashboard'
+                        component={Dashboard} />
 
-                        <SecureRoute
-                            exact
-                            path='/books'
-                            component={Books} />
+                    <SecureRoute
+                        exact
+                        path='/books'
+                        component={Books} />
 
-                        <SecureRoute
-                            exact
-                            path='/clubs'
-                            component={Clubs} />
-                    </Switch>
-                </AnimatePresence>
-            </Router>
+                    <SecureRoute
+                        exact
+                        path='/clubs'
+                        component={Clubs} />
+                </Switch>
+            </AnimatePresence>
         </Provider>
         
     )

@@ -1,25 +1,17 @@
 import React from 'react'
 import { motion, } from 'framer-motion'
+import { pageTransition, pageVariants, } from './zAnimation'
 
-
-const pageTransition = {
-    in: {
-        opacity: 1,
-        x: 0,
-    },
-    ini: {
-        opacity: 0,
-        x: '200%'
-    },
-    out: {
-        opacity: 1,
-        x: '-100%'
-    }
-}
 
 export const Books = () => {
     return (
-        <motion.div exit='out' animate='in' initial='ini' variants={pageTransition}>
+        <motion.div 
+            exit={pageVariants.out} 
+            animate={pageVariants.in} 
+            initial={pageVariants.ini} 
+            variants={pageVariants} 
+            transition={pageTransition}>
+
             <h1>Books</h1>
 
             <div style={{ height: '60rem', width: '100%', backgroundColor: '#982233' }} />

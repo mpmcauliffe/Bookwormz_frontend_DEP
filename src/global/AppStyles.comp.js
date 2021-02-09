@@ -7,6 +7,9 @@ export const GlobalStyle = createGlobalStyle`
     }
     body {
         overflow-x: hidden;
-        font-family: "multi-display",sans-serif;
+        font-family: "aileron",sans-serif;
+    }
+    h1 {
+        font-size: 3rem;
     }
 `

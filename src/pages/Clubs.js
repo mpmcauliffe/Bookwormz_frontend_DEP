@@ -1,21 +1,16 @@
 import React from 'react'
 import { motion, } from 'framer-motion'
+import { pageTransition, pageVariants, } from './zAnimation'
 
-
-const pageTransition = {
-    in: {
-        opacity: 1,
-        x: 0,
-    },
-    out: {
-        opacity: 0,
-        x: '200%'
-    }
-}
 
 export const Clubs = () => {
     return (
-        <motion.div exit='out' animate='in' initial='out' variants={pageTransition}>
+        <motion.div 
+            exit={pageVariants.out} 
+            animate={pageVariants.in} 
+            initial={pageVariants.ini} 
+            variants={pageVariants} 
+            transition={pageTransition}>
             
             <h1>Groups</h1>
 

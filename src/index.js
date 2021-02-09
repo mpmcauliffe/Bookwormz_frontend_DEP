@@ -10,11 +10,9 @@ import './global/font.css'
 
 
 ReactDOM.render(
-    <Router>
-        <ThemeProvider theme={Theme}>
-            <GlobalStyle />
-            <Route component={App} />
-        </ThemeProvider>
-    </Router>,
+    <ThemeProvider theme={Theme}>
+        <GlobalStyle />
+        <App />
+    </ThemeProvider>,
     document.getElementById('root')
 )

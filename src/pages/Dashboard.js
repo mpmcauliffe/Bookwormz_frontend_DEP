@@ -1,15 +1,23 @@
-import React, { Fragment, } from 'react'
-import { Navbar, } from '../dashboard/components'
+import React from 'react'
+import { motion, } from 'framer-motion'
+import { pageTransition, pageVariants, } from './zAnimation'
 
 
 export const Dashboard = () => {
     
 
     return (
-        <Fragment>
-            <h3>Dashboard</h3>
+        <motion.div
+            exit={pageVariants.out} 
+            animate={pageVariants.in} 
+            initial={pageVariants.ini} 
+            variants={pageVariants} 
+            transition={pageTransition}>
             
-        </Fragment>
+            <h1>Dashboard</h1>
+            
+            <div style={{ height: '60rem', width: '100%', backgroundColor: '#dfdf22' }} />
+        </motion.div>
         
     )
 }

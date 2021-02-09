@@ -7,11 +7,12 @@ export const login = history => async dispatch => {
     try {
         const res = await axios.get('/auth/token')
         localStorage.setItem('token', res.data.token)
-                
-            
+        history.push('/dashboard')    
+        dispatch({ type: LOGIN })
+           
         if (res.data.token) {
-            history.push('/dashboard')    
-            dispatch({ type: LOGIN })
+            console.log('push to dash')
+             
         }
         //return props.history.push('/')
         
@@ -24,7 +25,7 @@ export const login = history => async dispatch => {
 /* logs out user */
 export const logout = history => async dispatch => {
     try {
-        // localStorage.removeItem('token')
+        localStorage.removeItem('token')
         // const res = await axios.get('/auth/token')
                 
         history.push('/') 

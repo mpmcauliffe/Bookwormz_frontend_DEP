@@ -12,23 +12,27 @@ const NavMenuRight = styled.ul`
     }
     span { visibility: hidden; }
 
-    li:first-of-type { margin-right: 1rem; }
+    li:first-of-type { margin: 0 0 1rem -2rem; }
     li:nth-child(2), li:nth-child(3) { margin-top: .6rem; }
+    li:nth-child(4), li:nth-child(4) span { visibility: hidden; }
 
     @media (min-width: 601px) { 
-        li:first-of-type { margin-right: 2rem; }
+        li:first-of-type { margin: 0 2rem 0 .3rem; }
         li:nth-child(2), li:nth-child(3) { margin-top: 0; }
         span { font-size: 1.9rem; visibility: visible; }
     }
+    @media (min-width: 769px) {
+        li:nth-child(4), li:nth-child(4) span { visibility: visible; }
+    }
 `
 const NavLogo = styled.img`
-    height: 5.5rem;
-    margin-right: 3rem;
+    height: 4.5rem;
+    margin: .5rem 1rem 0 ;
 
-    @media (min-width: 601px) { height: 6rem; }
+    @media (min-width: 601px) { height: 6rem; margin-right: 3rem; }
 `
 
-const Navbar_proto = ({ isAuthenticated }) => {
+const Navbar_proto = ({ isAuthenticated, }) => {
 
     if (!isAuthenticated) { return null }
 
@@ -46,10 +50,16 @@ const Navbar_proto = ({ isAuthenticated }) => {
 
             <nav className='brown lighten-5'>
                 <div className='nav-wrapper'>
-                <NavLogo 
-                    alt='BKW_LOGO'
-                    className='right brand-logo'
-                    src={require(`./bkw-small.png`).default} />
+                <Link 
+                    to='/dashboard'>
+                    <NavLogo 
+                        alt='BKW_LOGO'
+                        className='right brand-logo'
+                        src={window.innerWidth < 481 
+                            ? require(`./bkw-abbr.png`).default
+                            : require(`./bkw-small.png`).default} />    
+                </Link>
+                
                 <NavMenuRight className='left '>
                     <li><a
                         className='sidenav-trigger show-on-large' 
@@ -64,6 +74,11 @@ const Navbar_proto = ({ isAuthenticated }) => {
                         to='/books'>
                             <i className='fas fa-book' />
                             <span>&nbsp;&nbsp;Books</span></Link></li>
+
+                    <li><Link 
+                        to='/dashboard'>
+                            <i className='fas fa-tachometer-alt' />
+                            <span>&nbsp;&nbsp;Dashboard</span></Link></li>
                 </NavMenuRight>
                 </div>
             </nav>

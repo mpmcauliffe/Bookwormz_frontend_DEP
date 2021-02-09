@@ -5,6 +5,7 @@ import { Route, Redirect, } from 'react-router-dom'
 
 
 const SecureRoute_proto = ({ component: Component, isAuthenticated, ...rest }) => {
+
     return (
         <Route 
             { ...rest } 

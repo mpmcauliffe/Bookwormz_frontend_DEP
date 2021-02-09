@@ -4,7 +4,6 @@ import { pageTransition, pageVariants, } from './zAnimation'
 
 
 export const Dashboard = () => {
-    
 
     return (
         <motion.div

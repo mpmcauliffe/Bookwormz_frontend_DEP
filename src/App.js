@@ -8,7 +8,7 @@ import store from './store'
 
 import { Books, Dashboard, Club, Clubs, Landing, 
     UserAuth, } from './pages'
-import { Navbar, SecureRoute, } from './dashboard/components'
+import { Navbar, SecureRoute, } from './components'
 import setAuthToken from './utils/setAuthToken'
 
 import 'materialize-css/dist/css/materialize.min.css'

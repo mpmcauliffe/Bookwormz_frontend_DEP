@@ -21,7 +21,11 @@ const NavMenuRight = styled.ul`
         li:nth-child(2), li:nth-child(3) { margin-top: 0; }
         span { font-size: 1.9rem; visibility: visible; } 
         li:nth-child(2), li:nth-child(3), li:nth-child(4) { visibility: hidden; }
-        li:first-of-type { margin: 0 2rem 0 .3rem; }
+        li:first-of-type { margin: 0 -3.3rem 0 .3rem; }
+    }
+
+    @media (min-width: 769px) {
+        li:first-of-type { margin: 0 -1rem 0 .3rem; }
     }
 `
 const NavLogo = styled.img`

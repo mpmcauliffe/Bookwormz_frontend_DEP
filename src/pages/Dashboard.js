@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion, } from 'framer-motion'
 import { pageTransition, pageVariants, } from './zAnimation'
+import { MainContent, } from '../components'
 
 
 export const Dashboard = () => {
@@ -13,9 +14,11 @@ export const Dashboard = () => {
             variants={pageVariants} 
             transition={pageTransition}>
             
-            <h1>Dashboard</h1>
+            <MainContent>
+                <h1>Dashboard</h1>
+                <div style={{ height: '60rem', width: '100%', backgroundColor: '#dfdf22' }} />
+            </MainContent>
             
-            <div style={{ height: '60rem', width: '100%', backgroundColor: '#dfdf22' }} />
         </motion.div>
         
     )

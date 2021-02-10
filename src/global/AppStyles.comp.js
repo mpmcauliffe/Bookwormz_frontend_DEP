@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: "aileron",sans-serif;
     }
     h1 {
-        font-size: 3rem;
+        font-size: 6rem;
         font-weight: 600;
     }
     p {

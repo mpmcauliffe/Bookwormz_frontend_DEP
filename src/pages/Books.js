@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion, } from 'framer-motion'
 import { pageTransition, pageVariants, } from './zAnimation'
+import { HeaderSection, MainContent, Searchbar, } from '../components'
 
 
 export const Books = () => {
@@ -11,10 +12,13 @@ export const Books = () => {
             initial={pageVariants.ini} 
             variants={pageVariants} 
             transition={pageTransition}>
-
-            <h1>Books</h1>
-
-            <div style={{ height: '60rem', width: '100%', backgroundColor: '#982233' }} />
+                <MainContent>
+                    <HeaderSection>
+                        <h1>Books</h1>
+                        <Searchbar />
+                    </HeaderSection>
+                    <div style={{ height: '60rem', width: '100%', backgroundColor: '#982233' }} />
+                </MainContent>
         </motion.div>        
     )
 }

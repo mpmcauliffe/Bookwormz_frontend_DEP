@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion, } from 'framer-motion'
 import { pageTransition, pageVariants, } from './zAnimation'
-import { MainContent, } from '../components'
+import { HeaderSection, MainContent, Searchbar, } from '../components'
 
 
 export const Clubs = () => {
@@ -14,7 +14,11 @@ export const Clubs = () => {
             transition={pageTransition}>
             
             <MainContent>
-                <h1>Groups</h1>
+                <HeaderSection>
+                    <h1>Groups</h1>
+                    <Searchbar />
+                </HeaderSection>
+                
                 <div style={{ height: '60rem', width: '100%', backgroundColor: '#453299' }} />
             </MainContent>
             

@@ -28,7 +28,9 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 isAuthenticated: false,
-                error: 'Something went wrong.'
+                error: `This would tell you something useful, but Materialize doesn't`
+                    + ` provide a way to customize this Toast for practical usage.`
+                    + ` But HEY, I'm rounded.`
             }
 
         default:

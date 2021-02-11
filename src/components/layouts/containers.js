@@ -2,20 +2,30 @@ import styled from 'styled-components'
 
 
 export const MainContent = styled.main`
-    width: 100vw;
+    width: 99vw;
     padding: 1rem;
-    margin: 2rem auto;
+    margin: 1rem auto;
 
     @media (min-width: 601px) { 
         width: 80vw;
-        /* margin: 4rem auto;  */
+        margin: 2rem auto; 
     }
 `
 
 export const HeaderSection = styled.section`
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
 
-    h1 { color: ${p => p.theme.primary}; }
+    h1 {
+        font-size: 3.7rem; 
+        color: ${p => p.theme.primary}; 
+    }
+    
+    @media (min-width: 601px) { 
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        
+        h1 { font-size: 6rem; } 
+    }
 `

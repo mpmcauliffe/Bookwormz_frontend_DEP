@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 
 const SearchContainer = styled.div`
-    width: 60%;
+    width: 100%;
     margin-top: 1rem;
 
     display: flex;
@@ -27,6 +27,10 @@ const SearchContainer = styled.div`
         } 
     }
     input:focus + i { color: ${p => p.theme.ruby}; }
+
+    @media (min-width: 601px) {
+        width: 60%;
+    }
 `
 
 export const Searchbar = () => {
